@@ -45,7 +45,7 @@ contract SubNFT is ERC721URIStorage, ERC1617, Ownable {
     }
 
     /* 基于用户为索引，需要订阅才能调用的方法 */
-    function someFunctionNeedSubscribeToService2() public onlySubscribeByToken {
+    function someFunctionNeedSubscribeToService2() public onlySubscribeByUser {
         // ...
     }
 }
