@@ -75,7 +75,12 @@ contract ERC1617 is EIP1617 {
         subscribeTokens[_tokenID] = block.timestamp;
     }
 
+    function _beforeSubscribeToken(uint _tokenID) internal {
+        if (_isTokenExpire(_tokenID) == false) emit TokenIsExpire(_tokenID);
+    }
+
     modifier onlySubscribeToken(uint _tokenID) {
+        _beforeSubscribeToken(_tokenID);
         require(_isTokenExpire(_tokenID));
         _;
     }
