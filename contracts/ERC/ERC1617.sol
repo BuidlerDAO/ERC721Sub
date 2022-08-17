@@ -32,10 +32,7 @@ contract ERC1617 is EIP1617 {
         _tokenSubscribeExtend(_player, _tokenID, _time);
     }
 
-    function tokenSubscribeRevoke(address _player, uint _tokenID)
-        external
-        override
-    {
+    function tokenSubscribeRevoke(uint _tokenID) external override {
         _tokenSubscribeRevoke(_tokenID);
     }
 
@@ -48,14 +45,9 @@ contract ERC1617 is EIP1617 {
         return _isTokenExpire(_tokenID);
     }
 
-    function isUserExpire(address _player)
-        external
-        view
-        override
-        returns (bool)
-    {
-        uint userMostExprieTokenID = userMostExprieTokenIDs[_player];
-        uint isExpire = isTokenExpire(userMostExprieTokenID);
+    function isUserExpire(address _player) external override returns (bool) {
+        uint _tokenID = userMostExprieTokenIDs[_player];
+        bool isExpire = _isTokenExpire(_tokenID);
         return isExpire;
     }
 
@@ -132,7 +124,7 @@ contract ERC1617 is EIP1617 {
         uint mostExprieTokenID = userMostExprieTokenIDs[msg.sender];
         bool isExpire = _isTokenExpire(mostExprieTokenID);
 
-        _beforeOnlySubscribeService(_tokenID);
+        _beforeOnlySubscribeService(mostExprieTokenID);
         require(isExpire);
         _;
     }

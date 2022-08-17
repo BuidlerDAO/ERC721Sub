@@ -22,7 +22,7 @@ contract SubNFT is ERC721URIStorage, ERC1617, Ownable {
 
         _mint(player, newItemId);
         _setTokenURI(newItemId, tokenURI);
-        _tokenSubscribeExtend(newItemId, 7 days);
+        _tokenSubscribeExtend(player, newItemId, 7 days);
 
         _tokenIds.increment();
         return newItemId;

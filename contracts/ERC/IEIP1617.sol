@@ -4,7 +4,11 @@ pragma solidity ^0.8.0;
 interface EIP1617 {
     event TokenIsExpire(uint indexed tokenId);
 
-    function tokenSubscribeExtend(uint _tokenID, uint _time) external payable;
+    function tokenSubscribeExtend(
+        address _palyer,
+        uint _tokenID,
+        uint _time
+    ) external payable;
 
     /* base on tokenID */
     function tokenSubscribeRevoke(uint _tokenID) external;
