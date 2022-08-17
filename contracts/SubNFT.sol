@@ -28,7 +28,7 @@ contract SubNFT is ERC721URIStorage, ERC1617, Ownable {
         return newItemId;
     }
 
-    /* 二次修改订阅配置项 */
+    /* 修改订阅配置 */
     function changeSubscribeConfig(uint _time, uint _subscribePrice)
         public
         onlyOwner
@@ -36,16 +36,16 @@ contract SubNFT is ERC721URIStorage, ERC1617, Ownable {
         _changeSubscribeConfig(_time, _subscribePrice);
     }
 
-    /* 基于tokenid为索引，需要订阅才能调用的方法 */
+    /* 基于token为基准的，订阅即服务 */
     function someFunctionNeedSubscribeToService(uint _tokenID)
         public
         onlySubscribeByToken(_tokenID)
     {
-        // ...
+        // some service module
     }
 
-    /* 基于用户为索引，需要订阅才能调用的方法 */
+    /* 基于user为基准的，订阅即服务 */
     function someFunctionNeedSubscribeToService2() public onlySubscribeByUser {
-        // ...
+        // some service module
     }
 }

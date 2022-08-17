@@ -18,7 +18,6 @@ interface EIP1617 {
     function queryTokenExpire(uint _tokenID) external returns (uint);
 
     /* base on msg.sender */
-
     function isUserExpire(address _player) external returns (bool);
 
     function queryUserExpire(address _player) external returns (uint);
