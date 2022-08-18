@@ -126,13 +126,6 @@ contract ERC1617 is EIP1617 {
         if (_isTokenExpire(_tokenID) == false) emit TokenIsExpire(_tokenID);
     }
 
-    /* 以token作为订阅服务提供依据 */
-    modifier onlySubscribeByToken(uint _tokenID) {
-        _beforeOnlySubscribeService(_tokenID);
-        require(_isTokenExpire(_tokenID));
-        _;
-    }
-
     /* 以user作为订阅服务提供依据 */
     modifier onlySubscribeByUser() {
         uint mostExprieTokenID = userMostExprieTokenIDs[msg.sender];
